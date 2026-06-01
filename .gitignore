@@ -1,0 +1,48 @@
+# =============================================================================
+# Credenciais e segredos (NUNCA commitar)
+# =============================================================================
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+setup.log
+solidary.log
+*.log
+
+# =============================================================================
+# Go - binários, caches e relatórios de testes
+# =============================================================================
+donation-service/donation-service
+*.exe
+*.test
+*.prof
+*.out
+coverage.out
+coverage.html
+.go-build/
+
+# go.sum é gerado pelo `go mod tidy` durante o build do Docker.
+# Decisão: NÃO commitar (mantemos o go.mod enxuto e o tidy resolve).
+# Se quiser builds 100% reprodutíveis em CI, comente a linha abaixo.
+donation-service/go.sum
+
+# =============================================================================
+# Docker / IDE / SO
+# =============================================================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+docker-data/
+backups/
+
+# =============================================================================
+# Outputs do projeto (artefatos temporários)
+# =============================================================================
+/tmp/
+*.tar.gz
+!solidary_backup_*.tar.gz

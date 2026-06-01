@@ -1,0 +1,57 @@
+# =============================================================================
+# .dockerignore - donation-service (Go)
+# =============================================================================
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentação
+README.md
+*.md
+LICENSE
+
+# Variáveis de ambiente (NUNCA dentro da imagem)
+.env
+.env.local
+.env.*.local
+
+# Go - binários compilados e caches
+donation-service
+*.exe
+*.test
+*.prof
+*.out
+bin/
+build/
+dist/
+vendor/
+
+# Arquivos de teste Go
+*_test.go
+**/*_test.go
+testdata/
+
+# Arquivos temporários
+*.tmp
+*.log
+*.swp
+*.swo
+*~
+
+# IDE / Editor
+.vscode/
+.idea/
+*.iml
+.DS_Store
+
+# Docker
+Dockerfile*
+.dockerignore
+docker-compose*.yml
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml

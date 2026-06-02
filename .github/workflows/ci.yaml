@@ -72,7 +72,7 @@ jobs:
       - name: Rodar golangci-lint
         uses: golangci/golangci-lint-action@v9
         with:
-          version: v2.11
+          version: v2.12
 
   security-scan:
     name: Security Scan (SAST & SCA)
@@ -93,7 +93,7 @@ jobs:
         with:
           args: ./...
       - name: SCA com Trivy (filesystem)
-        uses: aquasecurity/trivy-action@v0.35.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           version: ${{ env.TRIVY_VERSION }}
           scan-type: fs
@@ -114,7 +114,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Configurar credenciais AWS
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -130,7 +130,7 @@ jobs:
           docker build -t $ECR_REPOSITORY:$IMAGE_TAG .
 
       - name: Scan da imagem com Trivy
-        uses: aquasecurity/trivy-action@v0.35.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           version: ${{ env.TRIVY_VERSION }}
           image-ref: ${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}

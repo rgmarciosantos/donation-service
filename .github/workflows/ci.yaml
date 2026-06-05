@@ -41,8 +41,6 @@ jobs:
         with:
           go-version: ${{ env.GO_VERSION }}
           cache: false
-      - name: Resolver dependências (gera go.sum)
-        run: go mod tidy
       - name: Build
         run: go build ./...
       - name: Rodar testes unitários

@@ -7,12 +7,12 @@ RUN apk add --no-cache ca-certificates git
 
 WORKDIR /build
 
-# Copia todo o código primeiro. O `go mod tidy` precisa enxergar os imports
-# do código-fonte para resolver corretamente as dependências indiretas.
-COPY . .
+COPY go.mod go.sum ./
 
-# Resolve dependências e atualiza go.sum
-RUN go mod tidy && go mod download
+RUN go mod download
+
+# agora o resto do código
+COPY . .
 
 # Compila binário estático e otimizado
 # CGO_ENABLED=0: binário estático sem dependências C
